@@ -1,0 +1,19 @@
+{
+  "testUsers": [
+    {
+      "username": "test.user@example.com",
+      "password": "Test123!",
+      "role": "user"
+    },
+    {
+      "username": "admin.user@example.com",
+      "password": "Admin123!",
+      "role": "admin"
+    }
+  ],
+  "testData": {
+    "sampleText": "Lorem ipsum dolor sit amet",
+    "sampleNumber": 12345
+  }
+}
+
