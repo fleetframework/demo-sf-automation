@@ -13,7 +13,7 @@ import java.util.List;
 public class HomePage extends BasePage {
 
     // Navigation and Header locators
-    private static final By APP_LAUNCHER = By.cssSelector(".slds-icon-waffle");
+    private static final By APP_LAUNCHER = By.xpath("//div[@role='navigation']//button[@title='App Launcher']");
     private static final By GLOBAL_SEARCH = By.cssSelector("input[placeholder*='Search']");
     private static final By USER_AVATAR = By.cssSelector(".profile-card-avatar");
     private static final By HELP_MENU = By.cssSelector("button[title='Help']");

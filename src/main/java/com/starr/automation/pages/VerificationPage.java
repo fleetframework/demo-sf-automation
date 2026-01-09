@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 public class VerificationPage extends BasePage {
 
     // Locators - extracted from Playwright analysis
-    private static final By VERIFICATION_CODE_INPUT = By.id("emc");
+    private static final By VERIFICATION_CODE_INPUT = By.id("tc");
     private static final By VERIFY_BUTTON = By.id("save");
     private static final By DONT_ASK_AGAIN_CHECKBOX = By.id("daa");
     private static final By RESEND_CODE_LINK = By.linkText("Resend Code");

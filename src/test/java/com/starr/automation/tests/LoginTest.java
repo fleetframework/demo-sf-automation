@@ -6,8 +6,11 @@ import com.starr.automation.pages.HomePage;
 import com.starr.automation.pages.LoginPage;
 import com.starr.automation.pages.VerificationPage;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,14 +62,14 @@ public class LoginTest extends BaseTest {
 
                 // Use OTP auto-generation if enabled
                 if (ConfigReader.isOtpEnabled()) {
-                    verificationPage.verifyWithAutoOtp(true); // Auto-generate and verify with "don't ask again"
+                    verificationPage.verifyWithAutoOtp(false); // Auto-generate and verify with "don't ask again"
                     logger.info("Successfully verified with auto-generated OTP");
 
-                    // Wait for navigation after OTP verification
-                    Thread.sleep(3000);
-
-                    // Should now be on home page
+                    // Wait for home page to load after OTP verification
                     HomePage homePage = new HomePage(driver);
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+                    wait.until(driver -> homePage.isLoaded());
+
                     assertTrue(homePage.isLoaded(),
                             "Should be on home page after OTP verification");
                 } else {
@@ -116,10 +119,12 @@ public class LoginTest extends BaseTest {
                     verificationPage.verifyWithAutoOtp(true, true);
                     logger.info("OTP verification completed");
 
-                    Thread.sleep(3000);
+                    // Wait for home page to load
+                    HomePage homePage = new HomePage(driver);
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+                    wait.until(driver -> homePage.isLoaded());
 
                     // Verify successful login
-                    HomePage homePage = new HomePage(driver);
                     assertTrue(homePage.isLoaded(),
                             "Should be on home page after OTP verification");
                     logger.info("Successfully logged in with OTP");

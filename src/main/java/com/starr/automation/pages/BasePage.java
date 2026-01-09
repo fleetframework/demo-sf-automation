@@ -123,5 +123,13 @@ public abstract class BasePage {
     public String getPageTitle() {
         return driver.getTitle();
     }
+
+    /**
+     * Check if the page is loaded.
+     * Must be implemented by each page object to verify page-specific elements.
+     *
+     * @return true if page is loaded
+     */
+    public abstract boolean isLoaded();
 }
 
